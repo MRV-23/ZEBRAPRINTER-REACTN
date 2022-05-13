@@ -31,7 +31,7 @@ RCT_EXPORT_METHOD(zsdkPrinterDiscoveryBluetooth:(RCTResponseSenderBlock)callback
       if ([accessory.protocolStrings containsObject:@"com.zebra.rawport"]) {
         NSLog(@"No accessoryManager");
         NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        accessory.name, @"friendlyName", nil];
+                                        accessory.name, @"friendlyName",accessory.modelNumber, @"ModelNumber",nil];
        
         [printers addObject:jsonDictionary];
         

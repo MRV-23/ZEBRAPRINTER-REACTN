@@ -43,8 +43,19 @@ class App extends Component {
 
         console.log(`Discovered printers are: ${discoveredPrinters}`);
 
+        console.log(`Discovered model: ${discoveredPrinters.ModelNumber}`);
+
         // Parse the JSON string
         var printersJson = JSON.parse(discoveredPrinters);
+
+        
+        //condition to identify printer
+        if (printersJson[0].ModelNumber === "ZQ620" && printersJson[0].ModelNumber != undefined ) {
+            console.log(`Es impresora chica -->: ${printersJson[0].ModelNumber}`);
+        } else {
+            console.error("Imprimi --> en impresora grande")
+        }
+        
 
         var printersArray = []; // Discovered printer array for listview
 
