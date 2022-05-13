@@ -31,8 +31,7 @@ RCT_EXPORT_METHOD(zsdkPrinterDiscoveryBluetooth:(RCTResponseSenderBlock)callback
       if ([accessory.protocolStrings containsObject:@"com.zebra.rawport"]) {
         NSLog(@"No accessoryManager");
         NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        accessory.name, @"friendlyName",accessory.modelNumber, @"ModelNumber",nil];
-       
+        accessory.name, @"friendlyName",accessory.modelNumber, @"ModelNumber",nil];
         [printers addObject:jsonDictionary];
         
       }
@@ -70,10 +69,12 @@ RCT_EXPORT_METHOD(zsdkWriteBluetooth: (NSString *)printerSerialNumber data:(NSSt
       language = PRINTER_LANGUAGE_ZPL;
     }
     
-    NSString *testLabel = [self getTestLabel:language];
-    NSData *data = [NSData dataWithBytes:[testLabel UTF8String] length:[testLabel length]];
-    [connection write:data error:&error];
-
+//    NSString *testLabel = [self getTestLabel:language];
+//    NSData *data = [NSData dataWithBytes:[testLabel UTF8String] length:[testLabel length]];
+    
+    NSData *printData = [NSData dataWithBytes:[data UTF8String] length:[data length]];
+    [connection write:printData error:&error];
+    
     [connection close];
   }
 }
