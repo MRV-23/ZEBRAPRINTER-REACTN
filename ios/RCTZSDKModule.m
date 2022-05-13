@@ -23,13 +23,18 @@ RCT_EXPORT_METHOD(zsdkPrinterDiscoveryBluetooth:(RCTResponseSenderBlock)callback
     
     // Zebra printer array
     NSMutableArray *printers = [NSMutableArray new];
+    
     // Traverse the connected accessories
     for (EAAccessory *accessory in connectedAccessories) {
       // Only interested in Zebra printers
+      NSLog(@"No accessoryManager");
       if ([accessory.protocolStrings containsObject:@"com.zebra.rawport"]) {
+        NSLog(@"No accessoryManager");
         NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                         accessory.name, @"friendlyName", nil];
+       
         [printers addObject:jsonDictionary];
+        
       }
     }
 
